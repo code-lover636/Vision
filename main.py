@@ -4,7 +4,7 @@ from fastapi.middleware.cors import CORSMiddleware
 import cv2
 from daltonize import daltonize, simulate, convert_back, gamma_correction
 from pydantic import BaseModel
-import cataract
+# import cataract
 import io
 
 app = FastAPI()
@@ -92,6 +92,8 @@ async def post(data: MyData):
             "status":"Success",
             "reply": "ok"
             }
+
+
 @app.post("/mode",tags=['mode'])
 async def post(data: MyData):
     global mode
@@ -116,15 +118,15 @@ async def index(request: Request):
     content = read("home.html")
     return Response(content, media_type='text/html')
 
-@app.get('/cataract')
-async def index(request: Request):
-    content = read("cataract.html")
-    return Response(content, media_type='text/html')
+# @app.get('/cataract')
+# async def index(request: Request):
+#     content = read("cataract.html")
+#     return Response(content, media_type='text/html')
 
-@app.post("/image")
-async def upload_image(image: UploadFile = File(...)):
-    contents = await image.read()
-    result, confidence = cataract.getImg(io.BytesIO(contents))
-    print(confidence)
-    return {"result": result, "confidence": confidence}
+# @app.post("/image")
+# async def upload_image(image: UploadFile = File(...)):
+#     contents = await image.read()
+#     result, confidence = cataract.getImg(io.BytesIO(contents))
+#     print(confidence)
+#     return {"result": result, "confidence": confidence}
 

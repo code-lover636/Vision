@@ -4,7 +4,7 @@ from fastapi.middleware.cors import CORSMiddleware
 import cv2
 from daltonize import daltonize, simulate, convert_back, gamma_correction
 from pydantic import BaseModel
-# import cataract
+import os
 import io
 
 app = FastAPI()
@@ -49,7 +49,7 @@ def read(file):
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://127.0.0.1:5500"], 
+    allow_origins=[int(os.environ.get('PORT', 4000))], 
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],

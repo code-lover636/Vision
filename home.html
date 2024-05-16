@@ -157,7 +157,7 @@
         input.addEventListener('change', ()=>{
             console.log(input.value);
 
-            fetch('http://127.0.0.1:8000/gamma', {
+            fetch('/gamma', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -174,7 +174,7 @@
         radioT.forEach(e => e.addEventListener('change', ()=>{
             const type = document.querySelector('input[name="type"]:checked');
             console.log(type.defaultValue);
-            fetch('http://127.0.0.1:8000/type', {
+            fetch('/type', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -190,7 +190,7 @@
         radioM.forEach(e => e.addEventListener('change', ()=>{
             const mode = document.querySelector('input[name="mode"]:checked');
             console.log(type.defaultValue);
-            fetch('http://127.0.0.1:8000/mode', {
+            fetch('/mode', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
